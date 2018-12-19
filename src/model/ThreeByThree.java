@@ -14,6 +14,17 @@ public class ThreeByThree implements TicTacToe {
     this.pieceCount = 0;
   }
 
+  public ThreeByThree(Piece[][] board) {
+    if (board.length == 3 && board[0].length == 3) {
+      this.board = board;
+    } else {
+      throw new IllegalArgumentException("Invalid board size for this model. Expected 3, got " +
+              board.length);
+    }
+    this.whoseTurn = Piece.O;
+    this.pieceCount = 0;
+  }
+
   private void initBoard() {
     for (int r = 0; r < this.board.length; r++) {
       for (int c = 0; c < this.board[0].length; c++) {
@@ -95,7 +106,7 @@ public class ThreeByThree implements TicTacToe {
       }
     }
     return false;
-}
+  }
 
   private boolean allEqual(ArrayList<Piece> arr) {
     for (int i = 1; i < arr.size(); i++) {
